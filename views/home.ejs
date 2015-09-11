@@ -1,0 +1,52 @@
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Notification Test</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navigation">
+            <p class="navbar-text">You are <b><%= req.user.username %></b> (ID: <span id="user-id"><%= req.user.id %></span>)</p>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <%- readme %>
+        </div>
+        <div class="col-md-4">
+            <h3>Send Notification</h3>
+            <div class="well well-sm">
+                <div class="form-group">
+                    <label>Receiver</label>
+                    <select class="form-control" id="notification-receiver">
+                        <% users.forEach(function(user) { %>
+                            <option value="<%= user.id %>"><%= user.username %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <input type="text" class="form-control" id="notification-message" value="Hello!">
+                </div>
+                <button class="btn btn-default" id="notification-send">Send</button>
+            </div>
+
+            <h3>Currently online</h3>
+            <ul id="connected-users-list">
+
+            </ul>
+        </div>
+    </div>
+</div>
